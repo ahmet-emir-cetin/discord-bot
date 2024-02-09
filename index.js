@@ -11,23 +11,16 @@ const data = new Map();
 const chalk = require("chalk");
 
 client.on("ready", () => {
-    if (client.user.username != null) {
-        console.log(`${client.user.username} ismi ile giriş yapıldı!`);
-        db.get("owodg") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Bot Durduruldu`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Bot Açıldı`))
-        db.get("batt") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otobattle Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otobattle Açık`));
-        db.get("otosell") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Açık`));
-        db.get("otopray") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Açık`));
-        console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Captcha Koruması Açık`));
-        // client.on("message", message => {
-        //     message.channel.send(`owo daily`)
-        // });
-        // console.log(`[${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}] | Günlük ödül alındı!`);
-    } else {
-        setInterval(() => {
-            console.log(chalk.red(`TOKEN HATALI!`));
-        }, 1000);
-    }
-    
+    console.log(`${client.user.username} ismi ile giriş yapıldı!`);
+    db.get("owodg") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Bot Durduruldu`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Bot Açıldı`))
+    db.get("batt") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otobattle Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otobattle Açık`));
+    db.get("otosell") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Açık`));
+    db.get("otopray") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Açık`));
+    console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Captcha Koruması Açık`));
+    // client.on("message", message => {
+    //     message.channel.send(`owo daily`)
+    // });
+    // console.log(`[${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}] | Günlük ödül alındı!`);
 });
 let sent = [];
 client.on("message", async(msg) => {
