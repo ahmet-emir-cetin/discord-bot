@@ -9,6 +9,36 @@ const Discord = require("discord.js-selfbot");
 const client = new Discord.Client();
 const data = new Map();
 const chalk = require("chalk");
+const DiscordRPC = require("discord-rpc");
+
+const rpcclientid = "876153252083798097";
+const rpc = new DiscordRPC.Client({ transport: "ipc" });
+
+rpc.on("ready", () => {
+    console.log(chalk.blue("Discord RPC Started!"));
+
+    rpc.setActivity({
+        details: "Selam",
+        state: `Aktif`,
+        startTimestamp: new Date(),
+        largeImageKey: "logo",
+        largeImageText: `v0.1`,
+        instance: false,
+        buttons: [
+            {
+                label: "Fiçuuuw",
+                url: "https://turksigara.net/",
+            },
+        ],
+    });
+});
+
+DiscordRPC.register(rpcclientid);
+rpc.login({ clientId: rpcclientid }).then(() => {
+    console.log("Discord RPC successfully logged in!");
+}).catch((error) => {
+    console.error("Error logging in Discord RPC:", error);
+});
 
 client.on("ready", () => {
     console.log(`${client.user.username} ismi ile giriş yapıldı!`);
@@ -17,11 +47,20 @@ client.on("ready", () => {
     db.get("otosell") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Otosell Açık`));
     db.get("otopray") == "1" ? console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Kapalı`)) : console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] OtoPray Açık`));
     console.log(chalk.cyan("[")+ chalk.grey(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)+ chalk.cyan(`] Captcha Koruması Açık`));
+    client.user.setPresence({
+        activity: {
+            name: 'Çocuk İşçi',
+            type: 'PLAYING', // 'PLAYING', 'WATCHING', 'LISTENING', 'STREAMING'
+        },
+        status: 'online' // 'online', 'idle', 'dnd', 'invisible'
+    });
     // client.on("message", message => {
     //     message.channel.send(`owo daily`)
     // });
     // console.log(`[${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}] | Günlük ödül alındı!`);
 });
+
+
 let sent = [];
 client.on("message", async(msg) => {
 
